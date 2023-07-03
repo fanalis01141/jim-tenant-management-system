@@ -7,7 +7,13 @@
       "slug": "dashboard-analytics"
     },
     {
-      "url": "/",
+      "url": "/tenants/create",
+      "name": "Add New Tenant",
+      "icon": "menu-icon tf-icons bx bx-user-plus",
+      "slug": "dashboard-analytics"
+    },
+    {
+      "url": "/settings",
       "name": "Settings",
       "icon": "menu-icon tf-icons bx bx-cog",
       "slug": "settings"
