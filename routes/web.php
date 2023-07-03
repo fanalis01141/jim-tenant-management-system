@@ -1,24 +1,19 @@
 <?php
+use App\Http\Controllers\TenantsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Redirect;
 
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Auth::routes();
 
+
+Route::resource('tenants', TenantsController::class);
+
+
 Route::get('/', function () {
+    // dd(Auth::user());
     if ((Auth::user())) {
         return view ('dashboard');
     } else {
@@ -27,10 +22,9 @@ Route::get('/', function () {
 });
 
 
-
 Route::post('/', function () {
-    Auth::logout();
-    return view('auth.login');
+    Auth::logout();    
+    return Redirect::to('/');
 })->name('logout');
 
 

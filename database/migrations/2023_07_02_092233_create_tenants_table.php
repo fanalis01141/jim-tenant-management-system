@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('sex');
             $table->string('phone_number');
+            $table->string('utility');
             $table->string('mode_of_payment');
             $table->string('amount_of_payment');
             $table->string('complete_address');
