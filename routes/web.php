@@ -15,6 +15,9 @@ Auth::routes();
 
 Route::resource('tenants', TenantsController::class);
 Route::resource('user', UserController::class);
+Route::get('/tenant/search-view', [TenantsController::class, 'searchUI'])->name('tenants.search');
+
+
 
 
 

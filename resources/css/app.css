@@ -1,3 +1,7 @@
 .icon-green{
     color: #78DF3F;
 }
+
+svg{
+    display: none !important;
+}

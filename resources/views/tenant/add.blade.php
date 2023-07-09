@@ -37,13 +37,6 @@
                             </div>
                         </div>
 
-                        <form action="" method="GET">
-                            <label for="tenant-name" class="">Search for</label>
-                            <input type="text" class="form-control" name="query" placeholder="Enter your search query" id="searchInput">
-                            <div id="searchResults" class="dropdown-menu"></div>
-                        </form>
-
-
                         <form action="{{route('tenants.store')}}" method="POST">
                             @csrf
     

@@ -38,12 +38,6 @@
                             </div>
                         </div>
 
-                        <form action="" method="GET">
-                            <input type="text" class="form-control" name="query" placeholder="Enter your search query" id="searchInput">
-                            <div id="searchResults" class="dropdown-menu"></div>
-                        </form>
-
-
                         <form action="<?php echo e(route('tenants.store')); ?>" method="POST">
                             <?php echo csrf_field(); ?>
     

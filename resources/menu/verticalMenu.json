@@ -22,10 +22,10 @@
       "slug": "tenants/create"
     },
     {
-      "url": "/tenants/create",
+      "url": "/tenant/search-view",
       "name": "Edit Tenant Details",
       "icon": "menu-icon tf-icons bx bx-edit-alt",
-      "slug": "tenants/create"
+      "slug": "tenants/search"
     },
     {
       "menuHeader": "Users"

@@ -9,7 +9,6 @@
 
 @section('content')
     <div class="row">
-
             <div class="col-md-8">
                 <div class="card p-1">
                     <div class="card-header">

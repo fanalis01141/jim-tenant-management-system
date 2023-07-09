@@ -96,4 +96,24 @@ class TenantsController extends Controller
         Tenants::where('id', $id)->delete();
         return Response::json('Success');
     }
+
+    public function searchUI(Request $request){
+
+        $users = Tenants::query()
+        ->orderBy('full_name', 'asc')
+        ->get();
+
+        $query = $request->input('query');
+
+        if (empty($query)) {
+            $results = collect();
+        } else {
+            $results = Tenants::where('full_name', 'like', "%{$query}%")->get();
+        }
+
+
+        return view('tenant.search', compact('users', 'results'));
+        
+
+    }
 }
