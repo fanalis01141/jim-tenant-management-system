@@ -14,7 +14,8 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        //
+        $users = Tenants::all();
+        return view('tenant.all', compact('users'));
     }
 
     /**
@@ -89,8 +90,10 @@ class TenantsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tenants $tenants)
+    public function destroy(string $id)
     {
-        //
+        // return response($tenants);
+        Tenants::where('id', $id)->delete();
+        return Response::json('Success');
     }
 }

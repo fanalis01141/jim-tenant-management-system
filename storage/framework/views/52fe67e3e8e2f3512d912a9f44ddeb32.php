@@ -3,10 +3,7 @@
   <!-- ! Hide app brand if navbar-full -->
   <div class="app-brand demo">
     <a href="<?php echo e(url('/')); ?>" class="app-brand-link">
-      <span class="app-brand-logo demo">
-        <?php echo $__env->make('_partials.macros',["width"=>25,"withbg"=>'#696cff'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-      </span>
-      <span class="app-brand-text demo menu-text fw-bold ms-2"><?php echo e(config('variables.templateName')); ?></span>
+      <span class="app-brand-text fw-bold ms-2" style="font-size: 18px;">Jacinto Ignacio Market</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-autod-block d-xl-none">

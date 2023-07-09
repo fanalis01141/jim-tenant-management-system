@@ -37,6 +37,13 @@
 
                             </div>
                         </div>
+
+                        <form action="" method="GET">
+                            <input type="text" class="form-control" name="query" placeholder="Enter your search query" id="searchInput">
+                            <div id="searchResults" class="dropdown-menu"></div>
+                        </form>
+
+
                         <form action="<?php echo e(route('tenants.store')); ?>" method="POST">
                             <?php echo csrf_field(); ?>
     
@@ -136,10 +143,7 @@
                                     <button class="btn btn-primary mt-4" type="submit">Add New Tenant</button>
                                 </div>
                             </div>
-                            <div class="mt-3 text-end">
-                                
-                            </div>
-    
+
                         </form>
                     </div>
                 </div>
@@ -148,10 +152,10 @@
             <div class="col-md-4">
                 <div class="card  p-1">
                     <div class="card-header">
-                        <div class="card-title"><h4>List of Tenants</h4></div>
+                        <div class="card-title"><h4>Quick View of Tenants</h4></div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="max-height: 400px; overflow-y: auto; height: 400px;">
                             <table class="table table-hover">
                               <thead>
                                 <tr>
@@ -167,10 +171,11 @@
                                         <td><?php echo e($user->branch); ?></td>
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                               
-
                               </tbody>
                             </table>
-                          </div>
+                        </div>
+
+                        <a href="/tenants" class="btn btn-primary mb-4">View All Tenants</a>
                     </div>
                 </div>
             </div>
