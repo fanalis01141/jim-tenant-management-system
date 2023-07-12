@@ -209,7 +209,6 @@ unset($__errorArgs, $__bag); ?>
 
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                               
-
                               </tbody>
                             </table>
                         </div>
@@ -224,7 +223,7 @@ unset($__errorArgs, $__bag); ?>
 
 function deleteUser(userId) {
     swal({
-        title: "Are you sure?",
+        title: "Delete User?",
         text: "Once deleted, you will not be able to restore this user",
         icon: "warning",
         buttons: true,

@@ -33,9 +33,8 @@
                                         <td><?php echo e($user->branch); ?></td>
                                         <td><?php echo e($user->phone_number); ?></td>
                                         <td class="align-items-start">
-                                            <a class="btn btn-primary" href="<?php echo e(url('user/' . $user->id . '/edit')); ?>"><i class="bx bx-edit-alt me-2"></i>Edit</a>
+                                            <a class="btn btn-primary" href="<?php echo e(url('tenants/' . $user->id . '/edit')); ?>"><i class="bx bx-edit-alt me-2"></i>Edit</a>
                                             <a class="btn btn-danger" onclick="deleteTenant(<?php echo e($user->id); ?>)" data-id="<?php echo e($user->id); ?>" href="#"><i class="bx bx-trash me-2"></i>Delete</a>
-
                                         </td>
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                               

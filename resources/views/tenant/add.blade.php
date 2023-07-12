@@ -43,13 +43,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">Store Name</label>
-                                    <input type="text" name="store_name" id="store-name" class="form-control" required>
+                                    <input type="text" name="store_name" id="store-name" class="form-control" required value="{{ old('store_name') }}">
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">Branch</label>
                                     <select name="branch" id="" class="form-select" required>
-                                        <option value="" selected disabled>Select Branch</option>
+                                        <option value="{{old('branch')}}" selected disabled>Select Branch</option>
                                         <option value="Jacinto Ignacio Market">Jacinto Ignacio Market</option>
                                         <option value="Jacinto Market">Jacinto Market</option>
                                         <option value="House of Saint">House of Saint</option>
@@ -60,11 +60,11 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">First Name of Tenant</label>
-                                    <input type="text" name="first_name" id="last-name" class="form-control" required>
+                                    <input type="text" name="first_name" id="last-name" class="form-control" required value="{{ old('first_name') }}">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">Last Name of Tenant</label>
-                                    <input type="text" name="last_name" id="last-name" class="form-control" required>
+                                    <input type="text" name="last_name" id="last-name" class="form-control" required value="{{ old('last_name') }}">
                                 </div>
                             </div>
 
@@ -72,7 +72,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">Sex / Gender</label>
-                                    <select name="sex" id="" class="form-select" required>
+                                    <select name="sex" id="" class="form-select" required value="{{ old('sex') }}">
                                         <option value="" selected disabled>Select Sex / Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -82,14 +82,14 @@
 
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">Phone number of Tenant</label>
-                                    <input type="number" name="phone" id="phone" class="form-control" required>
+                                    <input type="number" name="phone" id="phone" class="form-control" required value="{{ old('phone') }}">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <label for="tenant-name" class="">Address</label>
-                                    <input type="text" name="address" id="address" class="form-control" required>
+                                    <input type="text" name="address" id="address" class="form-control" required value="{{ old('address') }}">
                                 </div>
                             </div>
                                 

@@ -33,9 +33,8 @@
                                         <td>{{$user->branch}}</td>
                                         <td>{{$user->phone_number}}</td>
                                         <td class="align-items-start">
-                                            <a class="btn btn-primary" href="{{ url('user/' . $user->id . '/edit') }}"><i class="bx bx-edit-alt me-2"></i>Edit</a>
+                                            <a class="btn btn-primary" href="{{ url('tenants/' . $user->id . '/edit') }}"><i class="bx bx-edit-alt me-2"></i>Edit</a>
                                             <a class="btn btn-danger" onclick="deleteTenant({{$user->id}})" data-id="{{$user->id}}" href="#"><i class="bx bx-trash me-2"></i>Delete</a>
-
                                         </td>
                                     </tr>
                                     @endforeach                               

@@ -74,17 +74,54 @@ class TenantsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tenants $tenants)
+    public function edit(string $id)
     {
-        //
+        $tenant = Tenants::where('id', $id)->first();
+
+        $names = collect(explode(', ', $tenant->full_name));
+        $lastName = $names->get(0);
+        $firstName = $names->get(1);
+        
+        $tenantData = collect();
+        $tenantData->put('firstName', $firstName);
+        $tenantData->put('lastName', $lastName);
+
+        $decodedUtility = json_decode($tenant->utility);
+
+
+        $tenants = Tenants::query()
+        ->orderBy('full_name', 'asc')
+        ->get();  
+
+        return view('tenant.edit', compact('tenant', 'tenants', 'tenantData','decodedUtility'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tenants $tenants)
+    public function update(Request $request, string $id)
     {
-        //
+        // dd($id);
+        $utility = json_encode($request->utility);
+        $validated = $request->validate([
+            'phone' => 'required|size:11',
+        ]);
+        Tenants::where('id', $id)->update([
+            'store_name' => $request->store_name,
+            'branch' => $request->branch,
+            'full_name'=> $request->last_name.', '.$request->first_name,
+            'sex' => $request->sex,
+            'phone_number' => $request->phone,
+            'complete_address' => $request->address,
+            'utility' => $utility,
+            'mode_of_payment' => $request->mop,
+            'amount_of_payment' => $request->amount,
+            'start_date' => $request->date,
+            'start_time' => $request->time,
+        ]);
+
+        Session::flash('success', 'Tenant details has been updated!');
+        return Redirect::back();
     }
 
     /**
@@ -109,9 +146,8 @@ class TenantsController extends Controller
             $results = collect();
         } else {
             $results = Tenants::where('full_name', 'like', "%{$query}%")->get();
+         
         }
-
-
         return view('tenant.search', compact('users', 'results'));
         
 
