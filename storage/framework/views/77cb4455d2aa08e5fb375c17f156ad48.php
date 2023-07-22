@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('title', 'Dashboard - '); ?>
 
 <?php $__env->startSection('vendor-style'); ?>
@@ -82,19 +84,14 @@
                 </tr>
               </thead>
               <tbody>
-
                     <?php $__currentLoopData = $tenants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tenant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td><?php echo e(ucwords($tenant->full_name)); ?></td>
                         <td><?php echo e($tenant->branch); ?></td>
                         <td><?php echo e($tenant->phone_number); ?></td>
                         <td><?php echo e(\Carbon\Carbon::parse($tenant->start_date)->format('F j, Y')); ?>, at <?php echo e(\Carbon\Carbon::parse($tenant->start_time)->format('g:ia')); ?></td>
-                    
-
-
                     </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                               
-
               </tbody>
             </table>
         </div>
@@ -113,8 +110,8 @@
                 <i class='bx bx-arrow-to-left bx-md' style="color: #37dd61"></i>
               </div>
             </div>
-            <span class="d-block mb-1">Month Cash-in</span>
-            <h3 class="card-title text-nowrap mb-2">P 12345.00</h3>
+            <span class="d-block mb-1">Today's Cash-in</span>
+            <h3 class="card-title text-nowrap mb-2">₱ <?php echo e($sumPayments); ?>.00</h3>
           </div>
         </div>
       </div>

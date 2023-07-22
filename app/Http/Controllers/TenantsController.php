@@ -14,7 +14,10 @@ class TenantsController extends Controller
      */
     public function index()
     {
-        $users = Tenants::all();
+        $users = Tenants::query()
+        ->orderBy('full_name', 'asc')
+        ->get();
+        
         return view('tenant.all', compact('users'));
     }
 

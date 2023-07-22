@@ -84,19 +84,14 @@
                 </tr>
               </thead>
               <tbody>
-
                     @foreach ($tenants as $tenant)
                     <tr>
                         <td>{{ ucwords($tenant->full_name) }}</td>
                         <td>{{$tenant->branch}}</td>
                         <td>{{$tenant->phone_number}}</td>
                         <td>{{\Carbon\Carbon::parse($tenant->start_date)->format('F j, Y')}}, at {{\Carbon\Carbon::parse($tenant->start_time)->format('g:ia')}}</td>
-                    
-
-
                     </tr>
                     @endforeach                               
-
               </tbody>
             </table>
         </div>
@@ -115,8 +110,8 @@
                 <i class='bx bx-arrow-to-left bx-md' style="color: #37dd61"></i>
               </div>
             </div>
-            <span class="d-block mb-1">Month Cash-in</span>
-            <h3 class="card-title text-nowrap mb-2">P 12345.00</h3>
+            <span class="d-block mb-1">Today's Cash-in</span>
+            <h3 class="card-title text-nowrap mb-2">₱ {{$sumPayments}}.00</h3>
           </div>
         </div>
       </div>
