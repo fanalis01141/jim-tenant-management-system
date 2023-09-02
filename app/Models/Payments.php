@@ -11,7 +11,7 @@ class Payments extends Model
 
     protected $fillable = [
         'tenant_id',
-        'tenant_name',
+        'store_name',
         'option',
         'amount',
         'branch',

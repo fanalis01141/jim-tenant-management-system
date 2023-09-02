@@ -41,12 +41,12 @@ class TenantsController extends Controller
      */
     public function store(Request $request)
     {
+
         $utility = json_encode($request->utility);
         $validated = $request->validate([
             'phone' => 'required|size:11',
         ]);
         
-
         Tenants::create([
             'store_name' => $request->store_name,
             'branch' => $request->branch,
@@ -57,8 +57,6 @@ class TenantsController extends Controller
             'utility' => $utility,
             'mode_of_payment' => $request->mop,
             'amount_of_payment' => $request->amount,
-            'start_date' => $request->date,
-            'start_time' => $request->time,
         ]);
 
         Session::flash('success', 'Tenant added successfully!');
@@ -119,8 +117,6 @@ class TenantsController extends Controller
             'utility' => $utility,
             'mode_of_payment' => $request->mop,
             'amount_of_payment' => $request->amount,
-            'start_date' => $request->date,
-            'start_time' => $request->time,
         ]);
 
         Session::flash('success', 'Tenant details has been updated!');

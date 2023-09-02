@@ -31,23 +31,26 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'option' => 'required',
         ]);
 
-        $user = Tenants::where('full_name', $request->tenants)->first();
+        $storeName = trim(explode('-', $request->tenants)[0]);
+
+        $user = Tenants::where('store_name', $storeName)->first();
 
         if ($user) {
 
             Payments::create([
                 'tenant_id' => $user->id,
-                'tenant_name' => $user->full_name,
+                'store_name' => $storeName,
                 'option' => $request->option,
                 'amount' => $user->amount_of_payment,
                 'branch' => $user->branch,
             ]);
 
-            Session::flash('success', 'Payment for ' .$user->full_name. ' added successfully!');
+            Session::flash('success', 'Payment for ' . ucwords($storeName). ' added successfully!');
             return Redirect::back();
 
         } else {

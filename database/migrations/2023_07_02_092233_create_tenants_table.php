@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('mode_of_payment');
             $table->string('amount_of_payment');
             $table->string('complete_address');
-            $table->string('start_date');
-            $table->string('start_time');
+            $table->string('start_date')->nullable();
+            $table->string('start_time')->nullable();
             $table->timestamps();
         });
     }

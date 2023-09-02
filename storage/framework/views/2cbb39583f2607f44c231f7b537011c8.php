@@ -50,7 +50,7 @@
                                 <div class="col-md-6">
                                     <label for="tenant-name" class="">Branch</label>
                                     <select name="branch" id="" class="form-select" required>
-                                        <option value="<?php echo e(old('branch')); ?>" selected disabled>Select Branch</option>
+                                        <option value="" selected disabled>Select Branch</option>
                                         <option value="Jacinto Ignacio Market">Jacinto Ignacio Market</option>
                                         <option value="Jacinto Market">Jacinto Market</option>
                                         <option value="House of Saint">House of Saint</option>
@@ -124,13 +124,11 @@
     
                             <div class="row mt-3">
                                 <div class="col-md-4">
-                                    <label for="tenant-name" class="">Date</label>
-                                    <input class="form-control" type="date" id="html5-date-input"name="date" required/>
+                                    
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="tenant-name" class="">Time</label>
-                                    <input class="form-control" type="time" value="12:30:00" id="html5-time-input" name="time" />
+                                    
                                 </div>
 
                                 <div class="col-md-4 d-grid">

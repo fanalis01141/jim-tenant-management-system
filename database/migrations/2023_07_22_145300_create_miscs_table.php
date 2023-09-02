@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('miscs', function (Blueprint $table) {
             $table->id();
-            $table->string('misc');
+            $table->string('store_name');
+            $table->string('branch');
             $table->string('amount');
+            $table->string('misc');
+            $table->date('date_paid');
             $table->timestamps();
         });
     }

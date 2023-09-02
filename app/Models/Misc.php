@@ -12,5 +12,8 @@ class Misc extends Model
     protected $fillable = [
         'misc',
         'amount',
+        'date_paid',
+        'store_name',
+        'branch',
     ];
 }

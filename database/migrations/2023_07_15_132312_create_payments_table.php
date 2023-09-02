@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->string('tenant_id');
-            $table->string('tenant_name');
+            $table->string('store_name');
             $table->string('branch');
             $table->string('option');
             $table->string('amount')->nullable;

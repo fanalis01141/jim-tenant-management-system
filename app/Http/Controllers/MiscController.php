@@ -30,12 +30,19 @@ class MiscController extends Controller
      */
     public function store(Request $request)
     {
+        $parts = explode("-", $request->store_name);
+        $branch = trim($parts[1]);
+        $store_name = trim($parts[0]);
+
         Misc::create([
-            'misc' => $request->misc,
+            'store_name' => $store_name,
+            'branch' => $branch,
+            'misc' => $request->misc_type,
             'amount' => $request->amount,
+            'date_paid' => $request->date_paid,
         ]);
 
-        Session::flash('success', 'Added record for miscellaneous.');
+        Session::flash('success', 'Water record added.');
         return Redirect::back();
     }
 

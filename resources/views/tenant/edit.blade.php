@@ -123,13 +123,13 @@
     
                             <div class="row mt-3">
                                 <div class="col-md-4">
-                                    <label for="tenant-name" class="">Date</label>
-                                    <input class="form-control" type="date" id="html5-date-input" name="date" required value="{{ $tenant->start_date }}"/>
+                                    {{-- <label for="tenant-name" class="">Date</label>
+                                    <input class="form-control" type="date" id="html5-date-input" name="date" required value="{{ $tenant->start_date }}"/> --}}
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="tenant-name" class="">Time</label>
-                                    <input class="form-control" type="time" value="12:30:00" id="html5-time-input" name="time" value="{{ $tenant->start_time }}" required/>
+                                    {{-- <label for="tenant-name" class="">Time</label>
+                                    <input class="form-control" type="time" value="12:30:00" id="html5-time-input" name="time" value="{{ $tenant->start_time }}" required/> --}}
                                 </div>
 
                                 <div class="col-md-4 d-grid">
