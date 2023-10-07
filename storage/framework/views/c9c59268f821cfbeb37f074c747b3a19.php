@@ -71,6 +71,7 @@
                         <div class="divider-text">Recent Cash-in Payments for Today - <?php echo e(now()->format('F j, Y')); ?>
 
                         </div>
+
                     </div>                    
                       
                     <div class="table-responsive" style="max-height: 200px; overflow-y: auto; height: 200px;">
@@ -86,7 +87,7 @@
                                 <?php $__currentLoopData = $paidToday; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $paid): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <th><?php echo e($paid->store_name); ?></th>
-                                        <th><?php echo e($paid->option == 'Payment' ? number_format($paid->amount, 0, ',', ',') : '---'); ?></th>
+                                        <th><?php echo e($paid->option == 'Payment' ? number_format($paid->amount, 0, ',', ',') : 'N/A'); ?></th>
                                         <th><?php if($paid->option == 'Payment'): ?>
                                             <span class="badge bg-success">Paid</span>
                                         <?php else: ?>
@@ -111,7 +112,7 @@
 
                 <div class="card-body">
                     <div class="divider divider-danger">
-                        <div class="divider-text">Recent Cash-out/Expenses for Today - <?php echo e(now()->format('F j, Y')); ?></div>
+                        <div class="divider-text">Recent Cash-out/Expenses</div>
                     </div>                    
                       
                     <div class="table-responsive" style="max-height: 200px; overflow-y: auto; height: 200px;">
@@ -145,7 +146,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h3>Water</h3>
-                    <h2><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#newWater">New Water Entry</button></h2>
+                    <h2><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#newWater">New Water Misc Entry</button></h2>
                 </div>
                 <div class="card-body">
                     <div class="divider divider-primary">
@@ -301,11 +302,13 @@
                     </div>
 
                     <label for="nameBackdrop" class="form-label mt-3">Amount</label>
-                    <input type="text" name="amount" class="form-select" required>
+                    <input type="number" name="amount" class="form-control" required>
+
+                    <label for="date" class="form-label mt-3">Select Date of Transaction</label>
+                    <input class="form-control" type="date" name="date" value="<?php echo e(date ('Y-m-d')); ?>" required/>
 
                 </div>
                 <br>
-                <span class="text-primary">NOTE:</span> This will record only be for TODAY.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
@@ -402,7 +405,7 @@
 <!-- Modal By Month Report -->
 <div class="modal fade" id="byMonth" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
-        <form class="modal-content" action="<?php echo e(route('reports.monthly')); ?>" method="POST">
+        <form class="modal-content" action="<?php echo e(route('reports.monthly')); ?>" method="GET">
             <?php echo csrf_field(); ?>
 
             <div class="modal-header">
@@ -437,14 +440,14 @@
     </div>
 </div>
 
-<!-- Modal By Month Report -->
+<!-- Modal By Date Report -->
 <div class="modal fade" id="byDate" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
-        <form class="modal-content" action="<?php echo e(route('reports.monthly')); ?>" method="POST">
+        <form class="modal-content" action="<?php echo e(route('reports.date')); ?>" method="GET">
             <?php echo csrf_field(); ?>
 
             <div class="modal-header">
-                <h5 class="modal-title" id="backDropModalTitle">Select Month of Report</h5>
+                <h5 class="modal-title" id="backDropModalTitle">Select Date of Report</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
@@ -454,7 +457,7 @@
                         <div class="row">
                             
                             <label for="nameBackdrop" class="form-label">Select Date</label>
-                            <input type="date" name="DATE" class="form-control">
+                            <input type="date" name="date" class="form-control">
     
                             <label for="nameBackdrop" class="form-label mt-3">Select Branch</label>
                             <select name="branch" id="branch" class="form-control" required>

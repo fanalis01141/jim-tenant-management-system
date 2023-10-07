@@ -65,16 +65,24 @@ class MiscController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Misc $misc)
+    public function update(Request $request, $id)
     {
-        //
+
+        Misc::where('id', $request->id)->update([
+            'amount' => $request->amount,
+            'date_paid' => $request->date_paid,
+        ]);
+
+        Session::flash('success', 'Misc details has been updated!');
+        return Redirect::back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Misc $misc)
+    public function destroy($id)
     {
-        //
+        Misc::where('id', $id)->delete();
+        return Response::json('User deleted successfully');    
     }
 }

@@ -17,7 +17,7 @@ $navbarDetached = ($navbarDetached ?? '');
 
       <div class="navbar-nav-right d-flex align-items-center id="navbar-collapse">
         <div class="container">
-          <h1 class="m-3" style="font-weight:700;">Jacinto Ignacio Market Management System</h1>
+          <h2 class="mt-3" >Jacinto Ignacio Market Management System</h2>
         </div>
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -45,7 +45,7 @@ $navbarDetached = ($navbarDetached ?? '');
                 </a>
               </li>
               <li>
-                    <form id="logout-form" action="http://127.0.0.1:8000" method="POST" style="display: none;">
+                    <form id="logout-form" action="/" method="POST" style="display: none;">
                       @csrf
                     </form>
                     <a class="dropdown-item" href="{{ route('logout') }}"

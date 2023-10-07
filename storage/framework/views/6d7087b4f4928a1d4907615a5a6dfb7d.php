@@ -15,16 +15,12 @@
     <div class="row ">
         <div class="col-md-12 d-flex justify-content-between">
             <h3>Report for Branch <span class="text-primary"><?php echo e($branch); ?>  - <?php echo e($monthName); ?>, <?php echo e($year); ?></h3></span>
-            <?php if(auth()->guard()->check()): ?>
-                <form action="<?php echo e(route('logout')); ?>" method="POST">
-                    <?php echo csrf_field(); ?>
-                    <button type="submit" class="btn btn-danger">Logout</button>
-                </form>
-            <?php endif; ?>
+            <a href="<?php echo e(url()->previous()); ?>" class="btn btn-danger">Go Back</a>
+
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-md-12">
             <div class="card">
                 <div class="row card-body d-flex justify-content-between">
@@ -65,7 +61,6 @@
 
         </div>
 
-        
     </div>
 
     <div class="row mt-4">
@@ -83,6 +78,7 @@
                                 <tr>
                                     <th>Store</th>
                                     <th>Amount</th>  
+                                    <th>Status</th>
                                     <th>Date</th>                                      
                                 </tr>
                             </thead>
@@ -92,6 +88,13 @@
                                     <tr>
                                         <th><?php echo e($t->store_name); ?> - <?php echo e($t->branch); ?> </th>  
                                         <th><?php echo e(number_format($t->amount, 0, ',', ',')); ?></th>
+                                        <th>
+                                            <?php if($t->option == 'Payment'): ?>
+                                                <span class="badge bg-success">Paid</span>
+                                            <?php else: ?>
+                                                <span class="badge bg-danger">Pass</span>
+                                            <?php endif; ?>
+                                        </th>
                                         <th><?php echo e($t->created_at->format('M j, Y')); ?></th>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -114,7 +117,6 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Branch</th>
                                     <th>Type of Expense</th>         
                                     <th>Amount</th>             
                                     <th>Date</th>                           
@@ -124,10 +126,9 @@
                             <tbody>
                                 <?php $__currentLoopData = $tenantsExpenses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $t): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <th> <?php echo e($t->branch); ?> </th>  
                                         <th> <?php echo e($t->choice_1); ?> - <?php echo e($t->choice_2); ?></th>  
                                         <th> <?php echo e(number_format($t->amount, 0, ',', ',')); ?> </th>
-                                        <th><?php echo e($t->created_at->format('M j, Y')); ?></th>
+                                        <th> <?php echo e(\Carbon\Carbon::parse($t->date)->format('M j, Y')); ?> </th>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>

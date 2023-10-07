@@ -12,7 +12,7 @@
     {
       "url": "/tenants",
       "name": "View All Tenants",
-      "icon": "menu-icon tf-icons bx bx-list-ul",
+      "icon": "menu-icon tf-icons bx bx-user-circle",
       "slug": "tenants"
     },
     {
@@ -22,7 +22,34 @@
       "slug": "tenants/create"
     },
     {
-      "menuHeader": "Users"
+      "menuHeader": "Records"
+    },
+    {
+      "url": "/admin/payments",
+      "name": "View Payments",
+      "icon": "menu-icon tf-icons bx bx-dollar-circle",
+      "slug": "admin-payments"
+    },
+    {
+      "url": "/admin/expenses",
+      "name": "View Expenses",
+      "icon": "menu-icon tf-icons bx bx-archive-out",
+      "slug": "admin-payments"
+    },
+    {
+      "url": "/admin/misc/water",
+      "name": "View Water Misc",
+      "icon": "menu-icon tf-icons bx bx-water",
+      "slug": "admin-payments"
+    },
+    {
+      "url": "/admin/misc/elec",
+      "name": "View Electricity Misc",
+      "icon": "menu-icon tf-icons bx bx-bulb",
+      "slug": "admin-payments"
+    },
+    {
+      "menuHeader": "System Users"
     },
     {
       "url": "/user/create",

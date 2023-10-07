@@ -44,7 +44,7 @@
                 <i class='bx bx-store-alt bx-md' style="color:#379bdd"></i>
               </div>
             </div>
-            <span class="fw-semibold d-block mb-1">Number of Tenants</span>
+            <span class="d-block mb-1">Number of Tenants</span>
             <h3 class="card-title mb-2">{{$tenants->count()}}</h3>
           </div>
         </div>
@@ -79,8 +79,6 @@
                   <th>Name</th>
                   <th>Branch</th>
                   <th>Phone Number</th>
-                  <th>Start Date & Time</th>
-
                 </tr>
               </thead>
               <tbody>
@@ -89,7 +87,6 @@
                         <td>{{ ucwords($tenant->full_name) }}</td>
                         <td>{{$tenant->branch}}</td>
                         <td>{{$tenant->phone_number}}</td>
-                        <td>{{\Carbon\Carbon::parse($tenant->start_date)->format('F j, Y')}}, at {{\Carbon\Carbon::parse($tenant->start_time)->format('g:ia')}}</td>
                     </tr>
                     @endforeach                               
               </tbody>
@@ -123,8 +120,8 @@
                 <i class='bx bx-archive-out bx-md' style="color:#e93b3b"></i>              
               </div>
             </div>
-            <span class="fw-semibold d-block mb-1">Month Cash-out</span>
-            <h3 class="card-title mb-2">P 14,857</h3>
+            <span class="d-block mb-1">This Month's Expenses</span>
+            <h3 class="card-title mb-2">₱ {{$totalExpenses}}.00</h3>
           </div>
         </div>
       </div>

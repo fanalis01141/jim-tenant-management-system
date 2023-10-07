@@ -35,6 +35,7 @@ class ExpensesController extends Controller
             'choice_1' => $request->choice_1,
             'choice_2' => $request->choice_2,
             'amount' => $request->amount,
+            'date' => $request->date,
         ]);
 
         Session::flash('success', 'Expense for ' . $request->choice_1 .' - '. $request->choice_2 . ' added successfully!');
@@ -62,14 +63,25 @@ class ExpensesController extends Controller
      */
     public function update(Request $request, Expenses $expenses)
     {
-        //
+
+        Expenses::where('id', $request->idInput)->update([
+            'branch' => $request->branch,
+            'choice_1' => $request->choice_1,
+            'choice_2' => $request->choice_2,
+            'amount' => $request->amountInput,
+            'date' => $request->dateInput,
+        ]);
+
+        Session::flash('success', 'Expenses details has been updated!');
+        return Redirect::back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Expenses $expenses)
+    public function destroy(string $id)
     {
-        //
+        Expenses::where('id', $id)->delete();
+        return Response::json('User deleted successfully');
     }
 }

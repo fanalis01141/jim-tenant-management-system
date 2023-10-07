@@ -14,17 +14,12 @@
 <div class="container mt-5 mb-5">
     <div class="row ">
         <div class="col-md-12 d-flex justify-content-between">
-            <h3>Report for Branch <span class="text-primary">{{ $branch }}  - {{ $monthName }}, {{ $year }}</h3></span>
-            @auth
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Logout</button>
-                </form>
-            @endauth
+            <h3>Report for Branch <span class="text-primary">{{ $branch }}  - {{ $readableDate }}</h3></span>
+                <a href="{{ url()->previous() }}" class="btn btn-danger">Go Back</a>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-md-12">
             <div class="card">
                 <div class="row card-body d-flex justify-content-between">
@@ -80,7 +75,7 @@
                                 <tr>
                                     <th>Store</th>
                                     <th>Amount</th>  
-                                    <th>Date</th>                                      
+                                    <th>Status</th>
                                 </tr>
                             </thead>
 
@@ -88,8 +83,17 @@
                                 @foreach ($tenantsPayments as $t)
                                     <tr>
                                         <th>{{$t->store_name}} - {{$t->branch}} </th>  
-                                        <th>{{ number_format($t->amount, 0, ',', ',') }}</th>
-                                        <th>{{ $t->created_at->format('M j, Y') }}</th>
+                                        <th>
+                                            {{$t->option == 'Payment' ? number_format($t->amount, 0, ',', ',') : 'N/A'}}
+                                            {{-- {{ number_format($t->amount, 0, ',', ',') }} --}}
+                                        </th>
+                                        <th>
+                                            @if ($t->option == 'Payment')
+                                                <span class="badge bg-success">Paid</span>
+                                            @else
+                                                <span class="badge bg-danger">Pass</span>
+                                            @endif
+                                        </th>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -111,20 +115,16 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Branch</th>
                                     <th>Type of Expense</th>         
                                     <th>Amount</th>             
-                                    <th>Date</th>                           
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach ($tenantsExpenses as $t)
                                     <tr>
-                                        <th> {{$t->branch}} </th>  
                                         <th> {{$t->choice_1}} - {{$t->choice_2}}</th>  
                                         <th> {{ number_format($t->amount, 0, ',', ',') }} </th>
-                                        <th>{{ $t->created_at->format('M j, Y') }}</th>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -152,7 +152,6 @@
                                 <tr>
                                     <th>Store</th>
                                     <th>Amount</th>            
-                                    <th>Date</th>                            
                                 </tr>
                             </thead>
 
@@ -161,7 +160,6 @@
                                     <tr>
                                         <th>{{$t->store_name}}</th>  
                                         <th>{{ number_format($t->amount, 0, ',', ',') }}</th>
-                                        <th>{{ \Carbon\Carbon::parse($t->date_paid)->format('M j, Y') }}</th>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -185,7 +183,6 @@
                                 <tr>
                                     <th>Store</th>
                                     <th>Amount</th>        
-                                    <th>Date</th>                                 
                                 </tr>
                             </thead>
 
@@ -194,7 +191,6 @@
                                     <tr>
                                         <th>{{ $t->store_name }}</th>  
                                         <th>{{ number_format($t->amount, 0, ',', ',') }}</th>
-                                        <th>{{ \Carbon\Carbon::parse($t->date_paid)->format('M j, Y') }}</th>
                                     </tr>
                                 @endforeach
                             </tbody>
